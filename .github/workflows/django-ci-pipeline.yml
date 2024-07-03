@@ -28,7 +28,7 @@ jobs:
 
     - name: Build Django-hello-world
       run: |
-        docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:latest
+        docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:latest .
 
     - name: Push Django-hello-world to GCP artifactory
       run: |
