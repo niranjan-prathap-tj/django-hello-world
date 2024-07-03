@@ -11,7 +11,7 @@ def wish(request):
     return HttpResponse("Good Morning!")
 
 def test(request):
-    return HttpResponse("Testing the workflow trigger!")
+    return HttpResponse("Added version tagging in the pipeline!")
 
 def message(request):
     return HttpResponse("Git hub action change!")

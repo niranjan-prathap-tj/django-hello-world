@@ -31,3 +31,9 @@ jobs:
     - name: Push Django-hello-world to GCP artifactory
       run: |
         docker push asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:latest
+    - name: Create and push Git tag
+      if: success()
+      run: |
+        TAG="v1.0.${{ github.run_number }}"
+        git tag $TAG
+        git push origin $TAG
