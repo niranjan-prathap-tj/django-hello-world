@@ -2,9 +2,7 @@ name: Django-Hello-World CI
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [ "release/v1" ]
 
 jobs:
 
