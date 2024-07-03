@@ -15,6 +15,7 @@ spec:
       containers:
       - name: django-hello-world
         image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
+        imagePullPolicy: Always
         ports: 
           - containerPort: 8000
 ---

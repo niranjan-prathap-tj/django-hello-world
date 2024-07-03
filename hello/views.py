@@ -10,3 +10,9 @@ def welcome(request):
 def wish(request):
     return HttpResponse("Good Morning!")
 
+def test(request):
+    return HttpResponse("Change this message to test!")
+
+def message(request):
+    return HttpResponse("Git hub action change!")
+
