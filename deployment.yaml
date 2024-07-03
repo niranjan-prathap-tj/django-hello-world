@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-hello-world
+  template:
+    metadata:
+      labels:
+        app: django-hello-world
+    spec:
+      containers:
+      - name: django-hello-world
+        image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
+        ports: 
+          - containerPort: 8000
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: django-hello-world-service
+spec:
+  selector:
+    app: django-hello-world
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: NodePort
+  
