@@ -11,7 +11,7 @@ def wish(request):
     return HttpResponse("Good Morning!")
 
 def test(request):
-    return HttpResponse("Change this message to test!")
+    return HttpResponse("node port updated in the Service Yaml")
 
 def message(request):
     return HttpResponse("Git hub action change!")
