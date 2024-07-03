@@ -25,6 +25,11 @@ jobs:
     - name: Configure docker with GCP
       run: |
         gcloud auth configure-docker asia-south1-docker.pkg.dev
+    - name: github_build_number
+      shell: bash
+      run: |
+          pwd
+          echo "${{github.run_number}}"
 
     - name: Build Django-hello-world
       run: |
