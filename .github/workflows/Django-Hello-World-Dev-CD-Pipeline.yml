@@ -25,19 +25,19 @@ jobs:
 
     - name: Fetch DB_NAME secret
       id: get-db-name
-      run: echo "::set-output name=db_name::$(gcloud secrets versions access latest --secret=db_name)"
+      run: echo "::set-output name=db_name::$(gcloud secrets versions access latest --secret=dev-db_name)"
 
     - name: Fetch DB_USER secret
       id: get-db-user
-      run: echo "::set-output name=db_user::$(gcloud secrets versions access latest --secret=db_user)"
+      run: echo "::set-output name=db_user::$(gcloud secrets versions access latest --secret=dev-db_user)"
 
     - name: Fetch DB_PASSWORD secret
       id: get-db-password
-      run: echo "::set-output name=db_password::$(gcloud secrets versions access latest --secret=db_password)"
+      run: echo "::set-output name=db_password::$(gcloud secrets versions access latest --secret=dev-db_pw)"
 
     - name: Fetch INSTANCE_CONNECTION_NAME secret
       id: get-instance-connection-name
-      run: echo "::set-output name=instance_connection_name::$(gcloud secrets versions access latest --secret=instance_connection_name)"
+      run: echo "::set-output name=instance_connection_name::$(gcloud secrets versions access latest --secret=dev-db_instance_ip)"
 
     - name: Create Kubernetes secrets
       run: |
