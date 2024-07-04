@@ -16,7 +16,7 @@ spec:
       - name: django-hello-world
         image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
         imagePullPolicy: Always
-        ports: 
+        ports:
           - containerPort: 8000
         env:
         - name: DB_NAME
@@ -41,7 +41,7 @@ spec:
               key: instance_connection_name
       initContainers:
         - name: migrate-job
-          image: gcr.io/your-project/migrate-image:tag
+          image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
           env:
             - name: DB_NAME
               valueFrom:
@@ -63,7 +63,7 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: instance_connection_name
-          command: ["./entrypoint.sh", "migrate"]
+          command: ["python", "manage.py", "migrate"]
 
 ---
 apiVersion: v1 
