@@ -1,8 +1,8 @@
 name: Django-Hello-World CI
 
 on:
-  push:
-    branches: [ "release/v1" ]
+  workflow_dispatch:
+    
 
 jobs:
 
