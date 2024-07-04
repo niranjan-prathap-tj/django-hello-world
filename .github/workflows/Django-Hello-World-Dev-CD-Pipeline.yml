@@ -20,6 +20,10 @@ jobs:
     - name: Configure Docker to use gcloud command-line tool as a credential helper
       run: gcloud auth configure-docker
 
+    - name: Authenticate to GKE
+      run: |
+        gcloud container clusters get-credentials sample --zone asia-south1-a --project ${{ secrets.GCP_PROJECT }}
+
     - name: Fetch DB_NAME secret
       id: get-db-name
       run: echo "::set-output name=db_name::$(gcloud secrets versions access latest --secret=dev-db_name)"
