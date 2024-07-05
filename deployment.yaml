@@ -63,7 +63,8 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: instance_connection_name
-          command: ["python", "manage.py", "migrate"]
+          command: ["sh", "-c", "python manage.py makemigrations && python manage.py migrate"]
+
 
 ---
 apiVersion: v1 
