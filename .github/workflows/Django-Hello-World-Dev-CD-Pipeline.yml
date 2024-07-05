@@ -4,9 +4,9 @@ on:
   workflow_dispatch: # Triggered on-demand
      inputs:
         build-and-verify:
-        description: 'Do a build and verify'
-        required: 'true'
-        default: 'true'  
+          description: 'Do a build and verify'
+          required: true
+          default: 'true'  
 
 jobs:
   deploy:
