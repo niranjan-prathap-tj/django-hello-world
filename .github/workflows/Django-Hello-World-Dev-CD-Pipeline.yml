@@ -5,7 +5,8 @@ on:
     inputs:
       version:
         description: 'version'
-        required: true  
+        required: true
+        default: 'latest'  
 
 jobs:
   deploy:
@@ -64,6 +65,12 @@ jobs:
           --from-literal=db_password=${{ steps.get-db-password.outputs.db_password }} \
           --from-literal=instance_connection_name=${{ steps.get-instance-connection-name.outputs.instance_connection_name }} \
           --dry-run=client -o yaml | kubectl apply -f -
+    
+    - name: Install envsubst
+      run: |
+        sudo apt-get install -y gettext
 
     - name: Deploy to GKE
-      run: kubectl apply -f deployment.yaml
+      run: |
+        export VERSION=${{ github.event.inputs.version }}
+        envsubst < deployment.yaml | kubectl apply -f -

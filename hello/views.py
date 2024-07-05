@@ -17,7 +17,7 @@ def wish(request):
     return HttpResponse("Good Morning!")
 
 def test(request):
-    return HttpResponse("Added Kubernetes secrets and configured DC pipeline to authenticate GKE!")
+    return HttpResponse("Added envsbst to pass version details via CD pipeline workflow!")
 
 def message(request):
     return HttpResponse("Git hub action change!")
