@@ -2,11 +2,11 @@ name: Deploy to GKE
 
 on:
   workflow_dispatch: # Triggered on-demand
-     inputs:
-        build-and-verify:
-          description: 'Do a build and verify'
-          required: true
-          default: 'true'  
+    inputs:
+      version:
+        description: 'version'
+        required: true
+        default: 'true'  
 
 jobs:
   deploy:
