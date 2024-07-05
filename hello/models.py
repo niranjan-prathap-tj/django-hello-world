@@ -8,3 +8,8 @@ class Book(models.Model):
     publisher = models.CharField(max_length=300, null=True, blank=True)
     def __str__(self):
         return self.title
+
+class ebook(models.Model):
+    title = models.CharField(max_length=100)
+    def __str__(self):
+        return self.title
