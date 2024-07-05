@@ -20,15 +20,21 @@ jobs:
     - name: Configure Docker to use gcloud command-line tool as a credential helper
       run: gcloud auth configure-docker
 
-    - name: Install gke-gcloud-auth-plugin
-      run: |
-        export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-        sudo apt-get update
-        sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
+    # - name: Install gke-gcloud-auth-plugin
+    #   run: |
+    #     export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+    #     sudo apt-get update
+    #     sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
 
-    - name: Authenticate to GKE
-      run: |
-        gcloud container clusters get-credentials sample --zone asia-south1-a --project ${{ secrets.GCP_PROJECT }}
+    # - name: Authenticate to GKE
+    #   run: |
+    #     gcloud container clusters get-credentials sample --zone asia-south1-a --project ${{ secrets.GCP_PROJECT }}
+    - name: Authenticate the GKE
+      id: 'get-credentials'
+      uses: 'google-github-actions/get-gke-credentials@v2'
+      with:
+        cluster_name: 'sample'
+        location: 'asia-south1-a'
 
     - name: Fetch DB_NAME secret
       id: get-db-name
