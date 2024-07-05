@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: django-hello-world
-        image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
+        image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:v1.0.23
         imagePullPolicy: Always
         ports:
           - containerPort: 8000
@@ -41,7 +41,7 @@ spec:
               key: instance_connection_name
       initContainers:
         - name: migrate-job
-          image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:latest
+          image: asia-south1-docker.pkg.dev/sample-427910/pocs/django-hello-world:v1.0.23
           env:
             - name: DB_NAME
               valueFrom:
