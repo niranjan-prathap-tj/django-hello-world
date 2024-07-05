@@ -5,8 +5,7 @@ on:
     inputs:
       version:
         description: 'version'
-        required: true
-        default: 'true'  
+        required: true  
 
 jobs:
   deploy:
