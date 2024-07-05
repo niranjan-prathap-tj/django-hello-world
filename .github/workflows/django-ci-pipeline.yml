@@ -2,7 +2,6 @@ name: Django-Hello-World CI
 
 on:
   workflow_dispatch:
-    
 
 jobs:
 
@@ -26,17 +25,25 @@ jobs:
 
     - name: Build Django-hello-world
       run: |
-        docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:latest .
+        docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:temp .
 
-    - name: Push Django-hello-world to GCP artifactory
-      run: |
-        docker push asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:latest
     - name: Create and push Git tag
+      id: tag_step
       if: success()
       run: |
         TAG="v1.0.${{ github.run_number }}"
         git tag $TAG
         git push origin $TAG
+        echo "::set-output name=tag::$TAG"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Tag Django-Hello-World build
+      run: |
+        docker tag asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:temp asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:${{ steps.tag_step.outputs.tag }}
+
+    - name: Push Django-hello-world to GCP artifactory
+      run: |
+        docker push asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/pocs/django-hello-world:${{ steps.tag_step.outputs.tag }}
+    
 
