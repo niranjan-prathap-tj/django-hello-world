@@ -44,8 +44,10 @@ db.sqlite3
 db.sqlite3-journal
 
 # Django migrations
+migrations
 migrations/
 migrations/__pycache__/
+migrations/__pycache__/__init__.cpython-310.pyc
 
 
 # Flask stuff:
